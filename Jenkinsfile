@@ -1,4 +1,4 @@
-Node {
+node {
 	docker.image('node:lts-bullseye-slim').inside('-p 3000:3000' ) {
 		stage('Build') { 
 			echo "Hilmatrix scripted Jenkinsfile - Build"
