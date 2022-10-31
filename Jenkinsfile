@@ -16,6 +16,11 @@ pipeline {
 				sh './jenkins/scripts/test.sh'
 			}
 		}
+		stage('Approval') { 
+			steps {
+				input message: 'Silahkan review perubahannya' 
+			}
+		}
 		stage('Deploy') { 
 			steps {
 				sh './jenkins/scripts/deliver.sh' 
