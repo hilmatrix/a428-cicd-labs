@@ -11,7 +11,7 @@ node {
 				sh 'echo hahaha'
 			}
 			stage('Deliver') {
-				sh 'rm ReactApp.zip ; cd ${WORKSPACE} ; zip ReactApp.zip *'
+				sh 'cd ${WORKSPACE} ; rm -f ReactApp.zip ; zip ReactApp.zip *'
 			}
 		}
     }
