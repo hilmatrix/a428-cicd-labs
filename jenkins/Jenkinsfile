@@ -2,22 +2,19 @@ node {
 	docker.image('node:lts-bullseye-slim').inside('-p 3000:3000' ) {
 		withEnv(['CI="true"']) {
 			stage('Build') { 
-				echo "Hilmatrix scripted Jenkinsfile - Build"
 				sh 'npm install' 
 			}
 			stage('Test') {
-				echo "Hilmatrix scripted Jenkinsfile - Test"
 				sh './jenkins/scripts/test.sh'
 			}
 			stage('Approval') {
-				input message: 'Silahkan review perubahannya' 
+				input message: 'Lanjutkan ke tahap Deploy ?' 
 			}
 			stage('Deliver') {
-				echo "Hilmatrix scripted Jenkinsfile - Deliver"
-                sh './jenkins/scripts/deliver.sh'
-                sleep(time: 1, unit: 'MINUTES')
-                sh './jenkins/scripts/kill.sh'
-            }
+				sh './jenkins/scripts/deliver.sh'
+				sleep 1m
+				sh './jenkins/scripts/kill.sh'
+			}
 		}
     }
 }
