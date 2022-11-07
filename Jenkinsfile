@@ -12,9 +12,11 @@ node {
 				sh 'echo hahaha'
 			}
 			stage('Deliver') {
+				sh 'pwd'
+				sh 'whoami'
 				sh 'cd ${WORKSPACE} ; rm -f ReactApp.tgz ; tar -czvf ReactApp.tgz jenkins public src Jenkinsfile package.json  appspec.yml aws'
-				sh 'aws s3api put-object --bucket hilmatrix-react-app --key ReactApp.tgz  --body ReactApp.tgz'
-				sh 'aws deploy create-deployment --application-name ReactApp --ignore-application-stop-failures --deployment-group-name ReactApp-DeploymentGroup --s3-location bucket=hilmatrix-react-app,bundleType=tgz,key=ReactApp.tgz'
+				sh '/usr/local/bin/aws s3api put-object --bucket hilmatrix-react-app --key ReactApp.tgz  --body ReactApp.tgz'
+				sh '/usr/local/bin/aws deploy create-deployment --application-name ReactApp --ignore-application-stop-failures --deployment-group-name ReactApp-DeploymentGroup --s3-location bucket=hilmatrix-react-app,bundleType=tgz,key=ReactApp.tgz'
 			}
 		}
     }
