@@ -9,19 +9,18 @@ node {
 				sh './jenkins/scripts/test.sh'
 			}
 			stage('Approval') {
-				sh 'echo hahaha'
+				input message: 'Lanjutkan ke tahap Deploy ?'
 			}
 			stage('Deliver') {
-				sh 'pwd'
-				sh 'whoami'
+				sh './jenkins/scripts/deliver.sh'
+				sh 'sleep 1m'
+				sh './jenkins/scripts/kill.sh'
 			}
 		}
     }
 	stage('Deploy to AWS') {
-		sh 'pwd'
-		sh 'whoami'
 		sh 'cd ${WORKSPACE} ; rm -f ReactApp.tgz ; tar -czvf ReactApp.tgz jenkins public src Jenkinsfile package.json  appspec.yml aws'
-				sh '/usr/local/bin/aws s3api put-object --bucket hilmatrix-react-app --key ReactApp.tgz  --body ReactApp.tgz'
-				sh '/usr/local/bin/aws deploy create-deployment --application-name ReactApp --ignore-application-stop-failures --deployment-group-name ReactApp-DeploymentGroup --s3-location bucket=hilmatrix-react-app,bundleType=tgz,key=ReactApp.tgz'
+		sh 'aws s3api put-object --bucket hilmatrix-react-app --key ReactApp.tgz  --body ReactApp.tgz'
+		sh 'aws deploy create-deployment --application-name ReactApp --ignore-application-stop-failures --deployment-group-name ReactApp-DeploymentGroup --s3-location bucket=hilmatrix-react-app,bundleType=tgz,key=ReactApp.tgz'
 	}
 }
