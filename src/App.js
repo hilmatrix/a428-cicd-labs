@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import buffcatman from './buffcatman-circle.png';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
           <h1 className="App-title">Welcome from Buffcatman !</h1>
         </header>
         <p className="App-intro">
-          <img src={buffcatman-circle} className="App-logo-reverse" alt="logo" />
+          <img src={buffcatman} className="App-logo-reverse" alt="logo" />
         </p>
       </div>
     );
