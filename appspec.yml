@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /root/react-app/
+file_exists_behavior: OVERWRITE
+hooks:
+  AfterInstall:
+    - location: aws/AfterInstall.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: aws/ApplicationStop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: aws/ApplicationStart.sh
+      timeout: 300
+      runas: root 

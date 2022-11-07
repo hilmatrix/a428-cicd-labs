@@ -11,7 +11,8 @@ node {
 				sh 'echo hahaha'
 			}
 			stage('Deliver') {
-				sh 'cd ${WORKSPACE} ; rm -f ReactApp.zip ; tar -czvf test.tgz *'
+				sh 'cd ${WORKSPACE} ; rm -f ReactApp.tgz ; tar -czvf ReactApp.tgz jenkins public src Jenkinsfile package.json  appspec.yml aws'
+				
 			}
 		}
     }
