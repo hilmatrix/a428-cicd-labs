@@ -7,8 +7,8 @@
   height: 80px;
 }
 
-.App-logo-reverse {
-  animation: App-logo-spin-reverse infinite 20s linear;
+.App-logo-alternate {
+  animation: App-logo-spin-alternate infinite 4s alternate;
   height: 360px;
 }
 
@@ -32,8 +32,8 @@
   to { transform: rotate(360deg); }
 }
 
-@keyframes App-logo-spin-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+@keyframes App-logo-spin-alternate {
+  from { transform: rotate(-30deg); }
+  to { transform: rotate(30deg); }
 }
 

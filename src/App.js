@@ -12,7 +12,7 @@ class App extends Component {
           <h1 className="App-title">Welcome from Buffcatman !</h1>
         </header>
         <p className="App-intro">
-          <img src={buffcatman} className="App-logo-reverse" alt="logo" />
+          <img src={buffcatman} className="App-logo-alternate" alt="logo" />
         </p>
       </div>
     );
