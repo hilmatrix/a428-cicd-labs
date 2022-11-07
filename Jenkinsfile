@@ -2,6 +2,7 @@ node {
 	docker.image('node:lts-bullseye-slim').inside('-p 3000:3000' ) {
 		withEnv(['CI="true"']) {
 			stage('Build') { 
+				checkout scm
 				sh 'npm install' 
 			}
 			stage('Test') {
