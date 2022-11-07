@@ -20,4 +20,8 @@ node {
 			}
 		}
     }
+	stage('Deploy to AWS') {
+		sh 'pwd'
+		sh 'whoami'
+	}
 }
